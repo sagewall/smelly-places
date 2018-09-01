@@ -1,35 +1,45 @@
 
-import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
-import { MatIcon, MatNavList, MatToolbar } from '@angular/material';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatIcon, MatNavList, MatSidenav, MatSidenavContainer, MatSidenavContent, MatToolbar } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { environment } from '../../environments/environment';
+import { MapComponent } from '../map/map.component';
 import { NavigationComponent } from './navigation.component';
 
 describe('NavigationComponent', () => {
   let component: NavigationComponent;
   let fixture: ComponentFixture<NavigationComponent>;
 
-  beforeEach(fakeAsync(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        BrowserAnimationsModule,
-        MatSidenavModule
-      ],
       declarations: [
+        MapComponent,
         MatIcon,
         MatNavList,
+        MatSidenav,
+        MatSidenavContent,
+        MatSidenavContainer,
         MatToolbar,
-        NavigationComponent
+        NavigationComponent,
+      ],
+      imports: [
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule,
+        BrowserAnimationsModule
       ]
     })
       .compileComponents();
+  }));
 
+  beforeEach(() => {
     fixture = TestBed.createComponent(NavigationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  }));
+  });
 
-  it('should compile', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

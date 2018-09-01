@@ -1,13 +1,19 @@
 import { async, TestBed } from '@angular/core/testing';
 import { MatIcon, MatNavList, MatSidenav, MatSidenavContainer, MatSidenavContent, MatToolbar } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
+import { MapComponent } from './map/map.component';
 import { NavigationComponent } from './navigation/navigation.component';
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
+        MapComponent,
         MatIcon,
         MatNavList,
         MatSidenav,
@@ -16,7 +22,11 @@ describe('AppComponent', () => {
         MatToolbar,
         NavigationComponent
       ],
-      imports: [BrowserAnimationsModule]
+      imports: [
+        BrowserAnimationsModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule,
+      ]
     }).compileComponents();
   }));
   it('should create the app', async(() => {
