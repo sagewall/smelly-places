@@ -1,6 +1,7 @@
 import { async, TestBed } from '@angular/core/testing';
 import { MatIcon, MatNavList, MatSidenav, MatSidenavContainer, MatSidenavContent, MatToolbar } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from '../environments/environment';
@@ -23,9 +24,10 @@ describe('AppComponent', () => {
         NavigationComponent
       ],
       imports: [
-        BrowserAnimationsModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,
+        BrowserAnimationsModule,
+        RouterTestingModule
       ]
     }).compileComponents();
   }));
