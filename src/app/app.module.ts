@@ -22,6 +22,7 @@ import { MapComponent } from './map/map.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { PlaceEditComponent } from './place-edit/place-edit.component';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { PlaceEditComponent } from './place-edit/place-edit.component';
   ],
   imports: [
     AppRoutingModule,
+    AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     BrowserAnimationsModule,

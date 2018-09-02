@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../auth.guard';
 import { MapEditComponent } from '../map-edit/map-edit.component';
 import { MapComponent } from '../map/map.component';
 import { NotFoundComponent } from '../not-found/not-found.component';
@@ -15,7 +16,8 @@ const appRoutes: Routes = [
       },
       {
         path: 'edit',
-        component: MapEditComponent
+        component: MapEditComponent,
+        canActivate: [AuthGuard]
       }
     ]
   },

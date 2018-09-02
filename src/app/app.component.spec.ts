@@ -8,6 +8,7 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -24,6 +25,7 @@ describe('AppComponent', () => {
         NavigationComponent
       ],
       imports: [
+        AngularFireAuthModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,
         BrowserAnimationsModule,

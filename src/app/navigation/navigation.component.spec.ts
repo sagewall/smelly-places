@@ -4,6 +4,7 @@ import { MatIcon, MatNavList, MatSidenav, MatSidenavContainer, MatSidenavContent
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from '../../environments/environment';
 import { MapComponent } from '../map/map.component';
@@ -26,6 +27,7 @@ describe('NavigationComponent', () => {
         NavigationComponent,
       ],
       imports: [
+        AngularFireAuthModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,
         BrowserAnimationsModule,

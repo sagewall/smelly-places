@@ -6,12 +6,17 @@
       <div routerLinkActive="background-color-accent_200" [routerLinkActiveOptions]="{exact: true}">
         <a mat-list-item [routerLink]="['/map']">Map</a>
       </div>
-      <div routerLinkActive="background-color-accent_200">
-        <a mat-list-item [routerLink]="['/map/edit']">Edit</a>
+      <div *ngIf="afAuth.user | async as user; else showLogin">
+        <div routerLinkActive="background-color-accent_200">
+          <a mat-list-item [routerLink]="['/map/edit']">Edit</a>
+        </div>
+        <div routerLinkActive="background-color-accent_200">
+          <a mat-list-item (click)="logout()">Logout ({{ user.displayName }})</a>
+        </div>
       </div>
-      <div routerLinkActive="background-color-accent_200">
-        <a mat-list-item [routerLink]="['/login']">Login</a>
-      </div>
+      <ng-template #showLogin>
+        <a mat-list-item (click)="login()">Login with Google</a>
+      </ng-template>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

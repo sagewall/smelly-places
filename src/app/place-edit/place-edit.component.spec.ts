@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { MatDialogModule, MatDialogRef, MatError, MatFormField, MatIcon, MatInput, MAT_DIALOG_DATA } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from '../../environments/environment';
 import { PlaceEditComponent } from './place-edit.component';
@@ -21,6 +22,7 @@ describe('PlaceEditComponent', () => {
         PlaceEditComponent
       ],
       imports: [
+        AngularFireAuthModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,
         BrowserAnimationsModule,
