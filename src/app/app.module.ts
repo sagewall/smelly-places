@@ -1,6 +1,15 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
+import {
+  MatButtonModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatSidenavModule,
+  MatToolbarModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from 'angularfire2';
@@ -12,6 +21,7 @@ import { MapEditComponent } from './map-edit/map-edit.component';
 import { MapComponent } from './map/map.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { PlaceEditComponent } from './place-edit/place-edit.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +30,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MapComponent,
     MapEditComponent,
     NotFoundComponent,
+    PlaceEditComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -27,7 +38,12 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AngularFirestoreModule,
     BrowserAnimationsModule,
     BrowserModule,
+    FormsModule,
     LayoutModule,
+    MatDialogModule,
+    MatIconModule,
+    MatInputModule,
+    MatFormFieldModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
@@ -35,6 +51,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MatListModule
   ],
   providers: [],
+  entryComponents: [PlaceEditComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

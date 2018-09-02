@@ -1,0 +1,17 @@
+<form #editForm="ngForm">
+  <div class="flex-column">
+    <mat-form-field>
+      <input name="name" placeholder="Name" [(ngModel)]="name" matInput required>
+      <mat-error *ngIf="editForm.controls.name?.invalid">Name is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input name="smell" placeholder="Smell" [(ngModel)]="smell" matInput required>
+      <mat-error *ngIf="editForm.controls.smell?.invalid">Smell is required.</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="flex-row justify-content-center">
+    <button type="submit" color="primary" [disabled]="editForm.invalid" (click)="savePlace()" mat-dialog-close mat-button>Save</button>
+    <button mat-dialog-close mat-button>Cancel</button>
+    <button *ngIf="id" color="warn" (click)="deletePlace()" mat-dialog-close mat-button>Delete</button>
+  </div>
+</form>

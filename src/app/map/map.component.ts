@@ -1,8 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import * as mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
+import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { FeatureCollection } from '../geo-json';
+import { FeatureCollection, GeoJson } from '../geo-json';
 import { MapService } from '../map.service';
 
 @Component({
@@ -23,8 +24,8 @@ export class MapComponent implements OnInit {
   private longitude: number;
   private latitude: number;
   private zoom: number;
-  private source: any;
-  private markers: any;
+  private source: mapboxgl.source;
+  private features: Observable<GeoJson[]>;
 
   constructor(private mapService: MapService) {
     mapboxgl.accessToken = environment.mapbox.accessToken;
@@ -40,7 +41,7 @@ export class MapComponent implements OnInit {
 
   private createMap() {
 
-    this.markers = this.mapService.getMarkers();
+    this.features = this.mapService.features;
 
     this.map = new mapboxgl.Map({
       container: this.mapCanvasNativeElement,
@@ -74,8 +75,8 @@ export class MapComponent implements OnInit {
 
       this.source = this.map.getSource('firebase');
 
-      this.markers.subscribe(markers => {
-        const data = new FeatureCollection(markers);
+      this.features.subscribe(features => {
+        const data = new FeatureCollection(features);
         this.source.setData(data);
       });
 
@@ -94,5 +95,4 @@ export class MapComponent implements OnInit {
       });
     });
   }
-
 }

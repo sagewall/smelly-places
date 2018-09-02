@@ -1,9 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import * as mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
+import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { FeatureCollection, GeoJson } from '../geo-json';
 import { MapService } from '../map.service';
+import { PlaceEditComponent } from '../place-edit/place-edit.component';
 
 @Component({
   selector: 'app-map-edit',
@@ -23,10 +26,13 @@ export class MapEditComponent implements OnInit {
   private longitude: number;
   private latitude: number;
   private zoom: number;
-  private source: any;
-  private markers: any;
+  private source: mapboxgl.source;
+  private features: Observable<GeoJson[]>;
 
-  constructor(private mapService: MapService) {
+  constructor(
+    private mapService: MapService,
+    public dialog: MatDialog
+  ) {
     mapboxgl.accessToken = environment.mapbox.accessToken;
     this.style = environment.mapbox.style;
     this.longitude = -105.1;
@@ -40,7 +46,7 @@ export class MapEditComponent implements OnInit {
 
   private createMap() {
 
-    this.markers = this.mapService.getMarkers();
+    this.features = this.mapService.features;
 
     this.map = new mapboxgl.Map({
       container: this.mapCanvasNativeElement,
@@ -74,8 +80,8 @@ export class MapEditComponent implements OnInit {
 
       this.source = this.map.getSource('firebase');
 
-      this.markers.subscribe(markers => {
-        const data = new FeatureCollection(markers);
+      this.features.subscribe(features => {
+        const data = new FeatureCollection(features);
         this.source.setData(data);
       });
 
@@ -95,18 +101,23 @@ export class MapEditComponent implements OnInit {
     });
 
     this.map.on('click', (event) => {
-      const coordinates = [event.lngLat.lng, event.lngLat.lat];
-      const newMarker = new GeoJson(coordinates, {
-        name: 'test name',
-        smell: 'test smell',
-      });
-      this.mapService.createMarker(<GeoJson>newMarker);
-    });
+      const bbox = [[event.point.x - 5, event.point.y - 5], [event.point.x + 5, event.point.y + 5]];
+      const features = this.map.queryRenderedFeatures(bbox, { layers: ['firebase'] });
 
-    this.map.on('click', 'firebase', (event) => {
-      console.log(event.features[0]);
+      if (features.length > 0) {
+        this.dialog.open(PlaceEditComponent, {
+          data: {
+            feature: features[0],
+            coordinates: features[0].geometry.coordinates
+          }
+        });
+      } else {
+        this.dialog.open(PlaceEditComponent, {
+          data: {
+            coordinates: [event.lngLat.lng, event.lngLat.lat]
+          }
+        });
+      }
     });
-
   }
-
 }

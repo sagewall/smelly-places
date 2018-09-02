@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { GeoJson } from './geo-json';
 
 @Injectable({
@@ -8,14 +9,37 @@ import { GeoJson } from './geo-json';
 })
 export class MapService {
 
-  constructor(private db: AngularFirestore) { }
+  private featureCollection: AngularFirestoreCollection<GeoJson>;
 
-  getMarkers(): Observable<GeoJson[]> {
-    return this.db.collection<GeoJson>('features').valueChanges();
+  get features(): Observable<GeoJson[]> {
+    return this.featureCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data() as GeoJson;
+          data.properties.id = a.payload.doc.id;
+          return data;
+        });
+      }));
   }
 
-  createMarker(feature: GeoJson) {
-    const data = JSON.parse(JSON.stringify(feature));
+  constructor(private db: AngularFirestore) {
+    this.featureCollection = this.db.collection<GeoJson>('features');
+  }
+
+  createFeature(feature: GeoJson) {
+    const data = { ...feature };
     return this.db.collection<GeoJson>('features').add(data);
+  }
+
+  updateFeature(feature: GeoJson) {
+    const data = { ...feature };
+    const id = data.properties.id;
+    return this.db.doc<GeoJson>(`features/${id}`).update(data);
+  }
+
+  deleteFeature(feature: GeoJson) {
+    const data = { ...feature };
+    const id = data.properties.id;
+    return this.db.doc<GeoJson>(`features/${id}`).delete();
   }
 }
