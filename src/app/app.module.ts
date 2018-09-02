@@ -8,6 +8,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
+import { MapEditComponent } from './map-edit/map-edit.component';
 import { MapComponent } from './map/map.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -17,7 +18,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AppComponent,
     NavigationComponent,
     MapComponent,
-    NotFoundComponent
+    MapEditComponent,
+    NotFoundComponent,
   ],
   imports: [
     AppRoutingModule,

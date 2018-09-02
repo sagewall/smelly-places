@@ -2,15 +2,15 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import * as mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 import { environment } from '../../environments/environment';
-import { FeatureCollection } from '../geo-json';
+import { FeatureCollection, GeoJson } from '../geo-json';
 import { MapService } from '../map.service';
 
 @Component({
-  selector: 'app-map',
-  templateUrl: './map.component.html',
-  styleUrls: ['./map.component.sass']
+  selector: 'app-map-edit',
+  templateUrl: './map-edit.component.html',
+  styleUrls: ['./map-edit.component.sass']
 })
-export class MapComponent implements OnInit {
+export class MapEditComponent implements OnInit {
   @ViewChild('mapCanvas')
   private mapCanvasElementRef: ElementRef;
 
@@ -93,6 +93,20 @@ export class MapComponent implements OnInit {
         }
       });
     });
+
+    this.map.on('click', (event) => {
+      const coordinates = [event.lngLat.lng, event.lngLat.lat];
+      const newMarker = new GeoJson(coordinates, {
+        name: 'test name',
+        smell: 'test smell',
+      });
+      this.mapService.createMarker(<GeoJson>newMarker);
+    });
+
+    this.map.on('click', 'firebase', (event) => {
+      console.log(event.features[0]);
+    });
+
   }
 
 }
