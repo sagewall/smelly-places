@@ -16,6 +16,7 @@ export class PlaceEditComponent implements OnInit {
   smell: string;
   displayName: string;
   email: string;
+  modified: boolean;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -30,15 +31,19 @@ export class PlaceEditComponent implements OnInit {
       this.smell = this.data.feature.properties.smell;
       this.displayName = this.data.feature.properties.displayName;
       this.email = this.data.feature.properties.email;
+      this.modified = true;
       this.feature = new GeoJson(this.data.coordinates, {
         id: this.id,
         name: this.name,
         smell: this.smell,
         displayName: this.displayName,
-        email: this.email
+        email: this.email,
+        modified: true
       });
     } else {
-      this.feature = new GeoJson(this.data.coordinates, {});
+      this.feature = new GeoJson(this.data.coordinates, {
+        modified: false
+      });
     }
   }
 
@@ -47,9 +52,8 @@ export class PlaceEditComponent implements OnInit {
     this.feature.properties.smell = this.toTitleCase(this.smell);
     this.feature.properties.displayName = this.afAuth.auth.currentUser.displayName;
     this.feature.properties.email = this.afAuth.auth.currentUser.email;
-    console.log(this.afAuth.auth.currentUser.email);
 
-    if (this.feature.properties.id) {
+    if (this.feature.properties.modified) {
       this.mapService.updateFeature(<GeoJson>this.feature);
     } else {
       this.mapService.createFeature(<GeoJson>this.feature);

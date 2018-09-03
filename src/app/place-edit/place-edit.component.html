@@ -12,6 +12,6 @@
   <div class="flex-row justify-content-center">
     <button type="submit" color="primary" [disabled]="editForm.invalid" (click)="savePlace()" mat-dialog-close mat-button>Save</button>
     <button mat-dialog-close mat-button>Cancel</button>
-    <button *ngIf="id" color="warn" (click)="deletePlace()" mat-dialog-close mat-button>Delete</button>
+    <button *ngIf="modified" color="warn" (click)="deletePlace()" mat-dialog-close mat-button>Delete</button>
   </div>
 </form>
