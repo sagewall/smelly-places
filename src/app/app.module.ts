@@ -12,6 +12,7 @@ import {
   MatToolbarModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -25,6 +26,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { PlaceEditComponent } from './place-edit/place-edit.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
+
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.com
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   entryComponents: [PlaceEditComponent],
