@@ -4,6 +4,7 @@ import { AuthGuard } from '../auth.guard';
 import { MapEditComponent } from '../map-edit/map-edit.component';
 import { MapComponent } from '../map/map.component';
 import { NotFoundComponent } from '../not-found/not-found.component';
+import { PrivacyPolicyComponent } from '../privacy-policy/privacy-policy.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/map', pathMatch: 'full' },
@@ -21,6 +22,7 @@ const appRoutes: Routes = [
       }
     ]
   },
+  { path: 'privacy', component: PrivacyPolicyComponent },
   { path: '**', component: NotFoundComponent }
 ];
 

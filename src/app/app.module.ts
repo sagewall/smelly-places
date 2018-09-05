@@ -23,6 +23,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { PlaceEditComponent } from './place-edit/place-edit.component';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     MapEditComponent,
     NotFoundComponent,
     PlaceEditComponent,
+    PrivacyPolicyComponent,
   ],
   imports: [
     AppRoutingModule,
