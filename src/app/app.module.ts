@@ -13,6 +13,7 @@ import {
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -22,8 +23,8 @@ import { MapComponent } from './map/map.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { PlaceEditComponent } from './place-edit/place-edit.component';
-import { AngularFireAuthModule } from 'angularfire2/auth';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
     NotFoundComponent,
     PlaceEditComponent,
     PrivacyPolicyComponent,
+    TermsOfServiceComponent,
   ],
   imports: [
     AppRoutingModule,
