@@ -94,5 +94,23 @@ export class MapComponent implements OnInit {
         }
       });
     });
+
+    this.map.on('mouseenter', 'firebase', () => this.map.getCanvas().style.cursor = 'pointer');
+
+    this.map.on('mouseleave', 'firebase', () => this.map.getCanvas().style.cursor = '');
+
+    this.map.on('click', 'firebase', (event) => {
+      const feature = event.features[0];
+      const descriptionHTML = `
+        <h3>${feature.properties.name}</h3>
+        <p>${feature.properties.name} smells like ${feature.properties.smell.toLowerCase()}.</p>
+        <p>- ${feature.properties.displayName}</p>
+      `;
+
+      new mapboxgl.Popup()
+        .setLngLat(feature.geometry.coordinates)
+        .setHTML(descriptionHTML)
+        .addTo(this.map);
+    });
   }
 }
