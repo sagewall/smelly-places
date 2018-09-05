@@ -1,23 +1,39 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav background-color-accent_50" fixedInViewport="true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+  <mat-sidenav #drawer class="sidenav background-color-accent_50" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
     <mat-toolbar color="primary">Menu</mat-toolbar>
-    <mat-nav-list>
-      <div routerLinkActive="background-color-accent_200" [routerLinkActiveOptions]="{exact: true}">
-        <a mat-list-item [routerLink]="['/map']">Map</a>
+    <div class="mat-nav-list-container">
+      <div>
+        <mat-nav-list>
+          <div routerLinkActive="background-color-accent_200" [routerLinkActiveOptions]="{exact: true}">
+            <a mat-list-item [routerLink]="['/map']">Map</a>
+          </div>
+          <div *ngIf="afAuth.user | async as user; else showLogin">
+            <div routerLinkActive="background-color-accent_200">
+              <a mat-list-item [routerLink]="['/map/edit']">Edit</a>
+            </div>
+            <div routerLinkActive="background-color-accent_200">
+              <a mat-list-item (click)="logout()">Logout ({{ user.displayName }})</a>
+            </div>
+          </div>
+          <ng-template #showLogin>
+            <a mat-list-item (click)="login()">Login with Google</a>
+          </ng-template>
+        </mat-nav-list>
       </div>
-      <div *ngIf="afAuth.user | async as user; else showLogin">
-        <div routerLinkActive="background-color-accent_200">
-          <a mat-list-item [routerLink]="['/map/edit']">Edit</a>
-        </div>
-        <div routerLinkActive="background-color-accent_200">
-          <a mat-list-item (click)="logout()">Logout ({{ user.displayName }})</a>
-        </div>
+      <div>
+        <mat-nav-list>
+          <div routerLinkActive="background-color-accent_200">
+            <a mat-list-item [routerLink]="['/privacy']">Privacy Policy</a>
+          </div>
+          <div routerLinkActive="background-color-accent_200">
+            <a mat-list-item [routerLink]="['/terms']">Terms of Service</a>
+          </div>
+        </mat-nav-list>
+        <div class="copyright mat-caption">&copy; Sage Wall, 2018.</div>
+        <div class="copyright mat-caption">All Rights Reserved.</div>
       </div>
-      <ng-template #showLogin>
-        <a mat-list-item (click)="login()">Login with Google</a>
-      </ng-template>
-    </mat-nav-list>
+    </div>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
@@ -27,10 +43,5 @@
       <span class="title">Smelly Places</span>
     </mat-toolbar>
     <router-outlet></router-outlet>
-    <div class="footer">
-      <span>&copy; Sage Wall, 2018. All Rights Reserved.</span>
-      <a mat-button routerLink="privacy">Privacy Policy</a>
-      <a mat-button routerLink="terms">Terms of Service</a>
-    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
