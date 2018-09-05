@@ -100,6 +100,10 @@ export class MapEditComponent implements OnInit {
       });
     });
 
+    this.map.on('mouseenter', 'firebase', () => this.map.getCanvas().style.cursor = 'pointer');
+
+    this.map.on('mouseleave', 'firebase', () => this.map.getCanvas().style.cursor = '');
+
     this.map.on('click', (event) => {
       const bbox = [[event.point.x - 5, event.point.y - 5], [event.point.x + 5, event.point.y + 5]];
       const features = this.map.queryRenderedFeatures(bbox, { layers: ['firebase'] });
