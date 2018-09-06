@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyAI8ldMMhtrrB5NxJ3RL_1FP_zcQswEhLA',
-    authDomain: 'smelly-places.firebaseapp.com',
-    databaseURL: 'https://smelly-places.firebaseio.com',
-    projectId: 'smelly-places',
-    storageBucket: '',
-    messagingSenderId: '950658953015'
+    apiKey: 'AIzaSyAl1WD9OcNnrH_VdKcIqDfbjHKF2i6xEBk',
+    authDomain: 'smelly-places-dev.firebaseapp.com',
+    databaseURL: 'https://smelly-places-dev.firebaseio.com',
+    projectId: 'smelly-places-dev',
+    storageBucket: 'smelly-places-dev.appspot.com',
+    messagingSenderId: '759609983473'
   },
   mapbox: {
     accessToken: 'pk.eyJ1Ijoic2FnZXdhbGwiLCJhIjoiY2psamw1eG1pMGQzMzNxa21raXh2YmJlZyJ9.Qdmx1V4Zt0eoer-giVLOgQ',
