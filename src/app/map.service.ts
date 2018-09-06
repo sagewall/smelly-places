@@ -42,4 +42,11 @@ export class MapService {
     const id = data.properties.id;
     return this.db.doc<GeoJson>(`features/${id}`).delete();
   }
+
+  addToHistory(feature: GeoJson) {
+    const data = { ...feature };
+    const id = data.properties.id;
+    data.properties.modifiedOn = new Date();
+    return this.db.collection<GeoJson>(`features/${id}/history`).add(data.properties);
+  }
 }

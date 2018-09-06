@@ -11,12 +11,10 @@ import { MapService } from '../map.service';
 })
 export class PlaceEditComponent implements OnInit {
   feature: GeoJson;
-  id: string;
   name: string;
   smell: string;
   displayName: string;
   email: string;
-  modified: boolean;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -25,24 +23,35 @@ export class PlaceEditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (this.afAuth.auth.currentUser) {
+      this.displayName = this.afAuth.auth.currentUser.displayName;
+      this.email = this.afAuth.auth.currentUser.email;
+    } else {
+      this.displayName = '';
+      this.email = '';
+    }
+
     if (this.data.feature) {
-      this.id = this.data.feature.properties.id;
+      this.mapService.addToHistory(this.data.feature);
+
       this.name = this.data.feature.properties.name;
       this.smell = this.data.feature.properties.smell;
-      this.displayName = this.data.feature.properties.displayName;
-      this.email = this.data.feature.properties.email;
-      this.modified = true;
+
       this.feature = new GeoJson(this.data.coordinates, {
-        id: this.id,
+        id: this.data.feature.properties.id,
         name: this.name,
         smell: this.smell,
         displayName: this.displayName,
         email: this.email,
-        modified: true
+        modified: true,
+        modifiedOn: new Date()
       });
     } else {
       this.feature = new GeoJson(this.data.coordinates, {
-        modified: false
+        displayName: this.displayName,
+        email: this.email,
+        modified: false,
+        modifiedOn: new Date()
       });
     }
   }
@@ -50,8 +59,6 @@ export class PlaceEditComponent implements OnInit {
   savePlace() {
     this.feature.properties.name = this.toTitleCase(this.name);
     this.feature.properties.smell = this.toTitleCase(this.smell);
-    this.feature.properties.displayName = this.afAuth.auth.currentUser.displayName;
-    this.feature.properties.email = this.afAuth.auth.currentUser.email;
 
     if (this.feature.properties.modified) {
       this.mapService.updateFeature(<GeoJson>this.feature);
