@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import * as mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { GeoJson } from './geo-json';
@@ -9,6 +10,8 @@ import { GeoJson } from './geo-json';
 })
 export class MapService {
 
+  center: mapboxgl.LanLat;
+  zoom: number;
   private featureCollection: AngularFirestoreCollection<GeoJson>;
 
   get features(): Observable<GeoJson[]> {

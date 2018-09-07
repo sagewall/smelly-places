@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import * as mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 import { Observable } from 'rxjs';
@@ -11,7 +11,7 @@ import { MapService } from '../map.service';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.sass']
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, OnDestroy {
   @ViewChild('mapCanvas')
   private mapCanvasElementRef: ElementRef;
 
@@ -36,6 +36,15 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.mapService.center) {
+      this.longitude = this.mapService.center.lng;
+      this.latitude = this.mapService.center.lat;
+    }
+
+    if (this.mapService.zoom) {
+      this.zoom = this.mapService.zoom;
+    }
+
     this.createMap();
   }
 
@@ -112,5 +121,10 @@ export class MapComponent implements OnInit {
         .setHTML(descriptionHTML)
         .addTo(this.map);
     });
+  }
+
+  ngOnDestroy() {
+    this.mapService.center = this.map.getCenter();
+    this.mapService.zoom = this.map.getZoom();
   }
 }
