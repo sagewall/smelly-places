@@ -1,3 +1,7 @@
 {
+  "files.watcherExclude": {
+    "**/.git/*/**": true,
+    "**/node_modules/*/**": true
+  },
   "liveServer.settings.root": "/dist/smelly-places"
 }
