@@ -64,8 +64,9 @@ export class MapEditComponent implements OnInit, OnDestroy {
       zoom: this.zoom
     });
 
-    if (navigator.geolocation) {
+    if (navigator.geolocation && !this.mapService.currentPosition) {
       navigator.geolocation.getCurrentPosition(position => {
+        this.mapService.currentPosition = new mapboxgl.LngLat(position.coords.longitude, position.coords.latitude);
         this.longitude = position.coords.longitude;
         this.latitude = position.coords.latitude;
         this.map.flyTo({

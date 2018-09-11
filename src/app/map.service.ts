@@ -10,6 +10,7 @@ import { GeoJson } from './geo-json';
 })
 export class MapService {
 
+  currentPosition: mapboxgl.LanLat;
   center: mapboxgl.LanLat;
   zoom: number;
   private featureCollection: AngularFirestoreCollection<GeoJson>;
