@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatCardModule } from '@angular/material';
+import { RouterTestingModule } from '@angular/router/testing';
 import { NotFoundComponent } from './not-found.component';
 
 describe('NotFoundComponent', () => {
@@ -7,7 +9,11 @@ describe('NotFoundComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [NotFoundComponent]
+      declarations: [NotFoundComponent],
+      imports: [
+        MatCardModule,
+        RouterTestingModule
+      ]
     })
       .compileComponents();
   }));
