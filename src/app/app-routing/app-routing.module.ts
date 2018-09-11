@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../auth.guard';
+import { HomeComponent } from '../home/home.component';
 import { MapEditComponent } from '../map-edit/map-edit.component';
 import { MapComponent } from '../map/map.component';
 import { NotFoundComponent } from '../not-found/not-found.component';
@@ -8,7 +9,8 @@ import { PrivacyPolicyComponent } from '../privacy-policy/privacy-policy.compone
 import { TermsOfServiceComponent } from '../terms-of-service/terms-of-service.component';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/map', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   {
     path: 'map',
     children: [

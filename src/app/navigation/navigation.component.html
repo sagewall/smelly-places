@@ -5,6 +5,9 @@
     <div class="mat-nav-list-container">
       <div>
         <mat-nav-list>
+          <div routerLinkActive="background-color-accent_200">
+            <a mat-list-item [routerLink]="['/home']">Home</a>
+          </div>
           <div routerLinkActive="background-color-accent_200" [routerLinkActiveOptions]="{exact: true}">
             <a mat-list-item [routerLink]="['/map']">Map</a>
           </div>
