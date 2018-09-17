@@ -16,6 +16,9 @@
               <a mat-list-item [routerLink]="['/map/edit']">Edit</a>
             </div>
             <div routerLinkActive="background-color-accent_200">
+              <a mat-list-item [routerLink]="['profile']">My Profile</a>
+            </div>
+            <div routerLinkActive="background-color-accent_200">
               <a mat-list-item (click)="logout()">Logout ({{ user.displayName }})</a>
             </div>
           </div>

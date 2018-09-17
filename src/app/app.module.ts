@@ -10,8 +10,7 @@ import {
   MatInputModule,
   MatListModule,
   MatSidenavModule,
-  MatToolbarModule
-} from '@angular/material';
+  MatToolbarModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -28,6 +27,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { PlaceEditComponent } from './place-edit/place-edit.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { ProfileComponent } from './profile/profile.component';
 import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
 
 @NgModule({
@@ -40,6 +40,7 @@ import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.com
     NotFoundComponent,
     PlaceEditComponent,
     PrivacyPolicyComponent,
+    ProfileComponent,
     TermsOfServiceComponent
   ],
   imports: [

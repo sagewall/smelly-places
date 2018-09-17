@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-import 'firebase/auth';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
