@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { GeoJson } from '../geo-json';
+import { MapService } from '../map.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,9 +12,11 @@ import { ActivatedRoute } from '@angular/router';
 export class ProfileComponent implements OnInit {
 
   currentUser: firebase.User;
+  places$: Observable<GeoJson[]>;
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private mapService: MapService
   ) { }
 
   ngOnInit() {
@@ -19,6 +24,8 @@ export class ProfileComponent implements OnInit {
       .subscribe((data: { currentUser: firebase.User }) => {
         this.currentUser = data.currentUser;
       });
+
+    this.places$ = this.mapService.getFeaturesByUser(this.currentUser.uid).valueChanges();
   }
 
 }

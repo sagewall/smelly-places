@@ -10,11 +10,13 @@ import { MapService } from '../map.service';
   styleUrls: ['./place-edit.component.sass']
 })
 export class PlaceEditComponent implements OnInit {
+
+  displayName: string;
+  email: string;
   feature: GeoJson;
   name: string;
   smell: string;
-  displayName: string;
-  email: string;
+  uid: string;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -26,9 +28,11 @@ export class PlaceEditComponent implements OnInit {
     if (this.afAuth.auth.currentUser) {
       this.displayName = this.afAuth.auth.currentUser.displayName;
       this.email = this.afAuth.auth.currentUser.email;
+      this.uid = this.afAuth.auth.currentUser.uid;
     } else {
       this.displayName = '';
       this.email = '';
+      this.uid = '';
     }
 
     if (this.data.feature) {
@@ -39,6 +43,7 @@ export class PlaceEditComponent implements OnInit {
 
       this.feature = new GeoJson(this.data.coordinates, {
         id: this.data.feature.properties.id,
+        uid: this.uid,
         name: this.name,
         smell: this.smell,
         displayName: this.displayName,
@@ -48,6 +53,7 @@ export class PlaceEditComponent implements OnInit {
       });
     } else {
       this.feature = new GeoJson(this.data.coordinates, {
+        uid: this.uid,
         displayName: this.displayName,
         email: this.email,
         modified: false,

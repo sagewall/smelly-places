@@ -1,4 +1,15 @@
 <mat-card *ngIf="currentUser">
   <mat-card-title>{{currentUser.displayName}}</mat-card-title>
   <mat-card-subtitle>{{currentUser.email}}</mat-card-subtitle>
+  <mat-card-content>
+    <mat-list *ngIf="places$ | async as places; else noPlaces;">
+      <div mat-subheader>My Smelly Places</div>
+      <mat-list-item *ngFor="let place of places">
+        <mat-icon matListIcon>close</mat-icon>
+        <div matLine>{{place.properties.name}}</div>
+        <div matLine>{{place.properties.smell}}</div>
+      </mat-list-item>
+    </mat-list>
+    <ng-template #noPlaces>No Places Found</ng-template>
+  </mat-card-content>
 </mat-card>
