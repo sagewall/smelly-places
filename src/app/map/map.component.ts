@@ -25,7 +25,7 @@ export class MapComponent implements OnInit, OnDestroy {
   private latitude: number;
   private zoom: number;
   private source: mapboxgl.source;
-  private features: Observable<GeoJson[]>;
+  private features$: Observable<GeoJson[]>;
 
   constructor(private mapService: MapService) {
     mapboxgl.accessToken = environment.mapbox.accessToken;
@@ -50,7 +50,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
   private createMap() {
 
-    this.features = this.mapService.features;
+    this.features$ = this.mapService.features;
 
     this.map = new mapboxgl.Map({
       container: this.mapCanvasNativeElement,
@@ -87,7 +87,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
       this.source = this.map.getSource('firebase');
 
-      this.features.subscribe(features => {
+      this.features$.subscribe(features => {
         const data = new FeatureCollection(features);
         this.source.setData(data);
       });
