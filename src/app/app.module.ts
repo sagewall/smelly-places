@@ -25,6 +25,7 @@ import { MapEditComponent } from './map-edit/map-edit.component';
 import { MapComponent } from './map/map.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { PlaceDeleteDialogComponent } from './place-delete-dialog/place-delete-dialog.component';
 import { PlaceEditComponent } from './place-edit/place-edit.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -38,6 +39,7 @@ import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.com
     MapComponent,
     MapEditComponent,
     NotFoundComponent,
+    PlaceDeleteDialogComponent,
     PlaceEditComponent,
     PrivacyPolicyComponent,
     ProfileComponent,
@@ -65,7 +67,10 @@ import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.com
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
-  entryComponents: [PlaceEditComponent],
+  entryComponents: [
+    PlaceDeleteDialogComponent,
+    PlaceEditComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

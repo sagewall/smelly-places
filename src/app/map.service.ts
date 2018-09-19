@@ -32,7 +32,11 @@ export class MapService {
 
   createFeature(feature: GeoJson) {
     const data = { ...feature };
-    return this.db.collection<GeoJson>('features').add(data);
+    return this.db.collection<GeoJson>('features').add(data).then(docRef => {
+      const id = docRef.id;
+      data.properties.id = id;
+      this.updateFeature(data);
+    });
   }
 
   updateFeature(feature: GeoJson) {

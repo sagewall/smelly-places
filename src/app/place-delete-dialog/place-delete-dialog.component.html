@@ -1,0 +1,6 @@
+<h2 mat-dialog-title>Delete {{place.properties.name}}</h2>
+<mat-dialog-content>Are you sure? It smells like {{place.properties.smell}}.</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button mat-dialog-close (click)="deletePlace()">Delete</button>
+</mat-dialog-actions>
