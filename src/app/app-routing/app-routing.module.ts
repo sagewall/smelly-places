@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../auth.guard';
+import { CurrentUserResolverService } from '../current-user-resolver.service';
 import { HomeComponent } from '../home/home.component';
 import { MapEditComponent } from '../map-edit/map-edit.component';
 import { MapComponent } from '../map/map.component';
 import { NotFoundComponent } from '../not-found/not-found.component';
 import { PrivacyPolicyComponent } from '../privacy-policy/privacy-policy.component';
-import { ProfileResolverService } from '../profile-resolver.service';
 import { ProfileComponent } from '../profile/profile.component';
 import { TermsOfServiceComponent } from '../terms-of-service/terms-of-service.component';
 
@@ -30,7 +30,7 @@ const appRoutes: Routes = [
   {
     path: 'profile',
     canActivate: [AuthGuard],
-    resolve: { currentUser: ProfileResolverService },
+    resolve: { currentUser: CurrentUserResolverService },
     component: ProfileComponent
   },
   { path: 'privacy', component: PrivacyPolicyComponent },

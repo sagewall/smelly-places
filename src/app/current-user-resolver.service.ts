@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ProfileResolverService implements Resolve<firebase.User> {
+export class CurrentUserResolverService implements Resolve<firebase.User> {
 
   constructor(
     private afAuth: AngularFireAuth,
