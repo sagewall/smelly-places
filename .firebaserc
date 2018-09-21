@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "smelly-places-dev",
+    "prod": "smelly-places"
+  }
+}
