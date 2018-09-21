@@ -1,8 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { GeoJson } from '../geo-json';
 import { MapService } from '../map.service';
+import { PlaceDeleteDialogComponent } from '../place-delete-dialog/place-delete-dialog.component';
 
 @Component({
   selector: 'app-place-edit',
@@ -20,6 +21,7 @@ export class PlaceEditComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
+    public placeDeleteDialog: MatDialog,
     private mapService: MapService,
     private afAuth: AngularFireAuth
   ) { }
@@ -72,7 +74,9 @@ export class PlaceEditComponent implements OnInit {
   }
 
   deletePlace() {
-    this.mapService.deleteFeature(<GeoJson>this.feature);
+    this.placeDeleteDialog.open(PlaceDeleteDialogComponent, {
+      data: <GeoJson>this.feature
+    });
   }
 
   private toTitleCase(input: string) {
