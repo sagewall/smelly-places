@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
   places$: Observable<GeoJson[]>;
 
   constructor(
-    public dialog: MatDialog,
+    public placeDeleteDialog: MatDialog,
     private mapService: MapService,
     private route: ActivatedRoute,
   ) { }
@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
   }
 
   deletePlace(place: GeoJson) {
-    this.dialog.open(PlaceDeleteDialogComponent, {
+    this.placeDeleteDialog.open(PlaceDeleteDialogComponent, {
       data: place
     });
   }
