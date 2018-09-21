@@ -51,13 +51,6 @@ export class MapService {
     return this.db.doc<GeoJson>(`features/${id}`).delete();
   }
 
-  addToHistory(feature: GeoJson) {
-    const data = { ...feature };
-    const id = data.properties.id;
-    data.properties.modifiedOn = new Date();
-    return this.db.collection<GeoJson>(`features/${id}/history`).add(data.properties);
-  }
-
   getFeaturesByUser(uid: string) {
     return this.db.collection<GeoJson>('features', ref => ref.where('properties.uid', '==', uid).orderBy('properties.name'));
   }

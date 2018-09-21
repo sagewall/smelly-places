@@ -36,8 +36,6 @@ export class PlaceEditComponent implements OnInit {
     }
 
     if (this.data.feature) {
-      this.mapService.addToHistory(this.data.feature);
-
       this.name = this.data.feature.properties.name;
       this.smell = this.data.feature.properties.smell;
 
