@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { FeatureCollection, GeoJson } from '../geo-json';
 import { MapService } from '../map.service';
-import { PlaceEditComponent } from '../place-edit/place-edit.component';
+import { PlaceEditDialogComponent } from '../place-edit-dialog/place-edit-dialog.component';
 
 @Component({
   selector: 'app-map-edit',
@@ -121,14 +121,14 @@ export class MapEditComponent implements OnInit, OnDestroy {
       const features = this.map.queryRenderedFeatures(bbox, { layers: ['firebase'] });
 
       if (features.length > 0) {
-        this.placeEditDialog.open(PlaceEditComponent, {
+        this.placeEditDialog.open(PlaceEditDialogComponent, {
           data: {
             feature: features[0],
             coordinates: features[0].geometry.coordinates
           }
         });
       } else {
-        this.placeEditDialog.open(PlaceEditComponent, {
+        this.placeEditDialog.open(PlaceEditDialogComponent, {
           data: {
             coordinates: [event.lngLat.lng, event.lngLat.lat]
           }

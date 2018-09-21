@@ -6,11 +6,11 @@ import { MapService } from '../map.service';
 import { PlaceDeleteDialogComponent } from '../place-delete-dialog/place-delete-dialog.component';
 
 @Component({
-  selector: 'app-place-edit',
-  templateUrl: './place-edit.component.html',
-  styleUrls: ['./place-edit.component.sass']
+  selector: 'app-place-edit-dialog',
+  templateUrl: './place-edit-dialog.component.html',
+  styleUrls: ['./place-edit-dialog.component.sass']
 })
-export class PlaceEditComponent implements OnInit {
+export class PlaceEditDialogComponent implements OnInit {
 
   displayName: string;
   email: string;

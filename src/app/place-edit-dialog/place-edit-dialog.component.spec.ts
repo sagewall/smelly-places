@@ -6,11 +6,11 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from '../../environments/environment';
-import { PlaceEditComponent } from './place-edit.component';
+import { PlaceEditDialogComponent } from './place-edit-dialog.component';
 
-describe('PlaceEditComponent', () => {
-  let component: PlaceEditComponent;
-  let fixture: ComponentFixture<PlaceEditComponent>;
+describe('PlaceEditDialogComponent', () => {
+  let component: PlaceEditDialogComponent;
+  let fixture: ComponentFixture<PlaceEditDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -19,7 +19,7 @@ describe('PlaceEditComponent', () => {
         MatFormField,
         MatIcon,
         MatInput,
-        PlaceEditComponent
+        PlaceEditDialogComponent
       ],
       imports: [
         AngularFireAuthModule,
@@ -38,7 +38,7 @@ describe('PlaceEditComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PlaceEditComponent);
+    fixture = TestBed.createComponent(PlaceEditDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
