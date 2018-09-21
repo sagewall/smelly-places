@@ -77,9 +77,9 @@ export class MapEditComponent implements OnInit, OnDestroy {
 
     this.map.addControl(new MapboxGeocoder({
       accessToken: mapboxgl.accessToken
-    }));
+    }), 'top-left');
 
-    this.map.addControl(new mapboxgl.GeolocateControl());
+    this.map.addControl(new mapboxgl.GeolocateControl(), 'top-left');
 
     this.map.on('load', () => {
       this.map.addSource('firebase', {
