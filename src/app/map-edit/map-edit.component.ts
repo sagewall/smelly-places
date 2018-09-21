@@ -31,7 +31,7 @@ export class MapEditComponent implements OnInit, OnDestroy {
 
   constructor(
     private mapService: MapService,
-    public dialog: MatDialog
+    public placeEditDialog: MatDialog
   ) {
     mapboxgl.accessToken = environment.mapbox.accessToken;
     this.style = environment.mapbox.style;
@@ -121,14 +121,14 @@ export class MapEditComponent implements OnInit, OnDestroy {
       const features = this.map.queryRenderedFeatures(bbox, { layers: ['firebase'] });
 
       if (features.length > 0) {
-        this.dialog.open(PlaceEditComponent, {
+        this.placeEditDialog.open(PlaceEditComponent, {
           data: {
             feature: features[0],
             coordinates: features[0].geometry.coordinates
           }
         });
       } else {
-        this.dialog.open(PlaceEditComponent, {
+        this.placeEditDialog.open(PlaceEditComponent, {
           data: {
             coordinates: [event.lngLat.lng, event.lngLat.lat]
           }
