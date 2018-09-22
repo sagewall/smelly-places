@@ -1,6 +1,6 @@
 {
-  "name": "smelly-places",
-  "short_name": "smelly-places",
+  "name": "Smelly Places",
+  "short_name": "Places",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
