@@ -30,10 +30,16 @@
       <div>
         <mat-nav-list>
           <div routerLinkActive="background-color-accent_200">
+            <a mat-list-item [routerLink]="['/cookie']">Cookie Policy</a>
+          </div>
+          <div routerLinkActive="background-color-accent_200">
+              <a mat-list-item [routerLink]="['/disclaimer']">Disclaimer</a>
+            </div>
+          <div routerLinkActive="background-color-accent_200">
             <a mat-list-item [routerLink]="['/privacy']">Privacy Policy</a>
           </div>
           <div routerLinkActive="background-color-accent_200">
-            <a mat-list-item [routerLink]="['/terms']">Terms of Service</a>
+            <a mat-list-item [routerLink]="['/terms']">Terms of Use</a>
           </div>
         </mat-nav-list>
         <div class="copyright mat-caption">&copy; Sage Wall, 2018.</div>

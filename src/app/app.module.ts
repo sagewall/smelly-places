@@ -20,6 +20,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
+import { CookiePolicyComponent } from './cookie-policy/cookie-policy.component';
+import { DisclaimerComponent } from './disclaimer/disclaimer.component';
 import { HomeComponent } from './home/home.component';
 import { MapEditComponent } from './map-edit/map-edit.component';
 import { MapComponent } from './map/map.component';
@@ -29,11 +31,13 @@ import { PlaceDeleteDialogComponent } from './place-delete-dialog/place-delete-d
 import { PlaceEditDialogComponent } from './place-edit-dialog/place-edit-dialog.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { ProfileComponent } from './profile/profile.component';
-import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
+import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CookiePolicyComponent,
+    DisclaimerComponent,
     HomeComponent,
     NavigationComponent,
     MapComponent,
@@ -43,7 +47,7 @@ import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.com
     PlaceEditDialogComponent,
     PrivacyPolicyComponent,
     ProfileComponent,
-    TermsOfServiceComponent
+    TermsOfUseComponent
   ],
   imports: [
     AppRoutingModule,
