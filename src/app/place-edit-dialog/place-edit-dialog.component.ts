@@ -63,8 +63,8 @@ export class PlaceEditDialogComponent implements OnInit {
   }
 
   savePlace() {
-    this.feature.properties.name = this.toTitleCase(this.name);
-    this.feature.properties.smell = this.toTitleCase(this.smell);
+    this.feature.properties.name = this.name;
+    this.feature.properties.smell = this.smell;
 
     if (this.feature.properties.modified) {
       this.mapService.updateFeature(<GeoJson>this.feature);
@@ -79,10 +79,4 @@ export class PlaceEditDialogComponent implements OnInit {
     });
   }
 
-  private toTitleCase(input: string) {
-    return input.replace(/\w\S*/g, (txt) => {
-      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    }
-    );
-  }
 }
