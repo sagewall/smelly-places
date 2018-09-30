@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { GeoJson } from '../geo-json';
 import { MapService } from '../map.service';
+import { PlaceDeleteAllDialogComponent } from '../place-delete-all-dialog/place-delete-all-dialog.component';
 import { PlaceDeleteDialogComponent } from '../place-delete-dialog/place-delete-dialog.component';
 
 @Component({
@@ -17,6 +18,7 @@ export class ProfileComponent implements OnInit {
   places$: Observable<GeoJson[]>;
 
   constructor(
+    public placeDeleteAllDialog: MatDialog,
     public placeDeleteDialog: MatDialog,
     private mapService: MapService,
     private route: ActivatedRoute,
@@ -34,6 +36,12 @@ export class ProfileComponent implements OnInit {
   deletePlace(place: GeoJson) {
     this.placeDeleteDialog.open(PlaceDeleteDialogComponent, {
       data: place
+    });
+  }
+
+  deletePlaces(places: GeoJson[]) {
+    this.placeDeleteAllDialog.open(PlaceDeleteAllDialogComponent, {
+      data: places
     });
   }
 

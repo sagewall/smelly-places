@@ -27,6 +27,7 @@ import { MapEditComponent } from './map-edit/map-edit.component';
 import { MapComponent } from './map/map.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { PlaceDeleteAllDialogComponent } from './place-delete-all-dialog/place-delete-all-dialog.component';
 import { PlaceDeleteDialogComponent } from './place-delete-dialog/place-delete-dialog.component';
 import { PlaceEditDialogComponent } from './place-edit-dialog/place-edit-dialog.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
@@ -43,6 +44,7 @@ import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
     MapComponent,
     MapEditComponent,
     NotFoundComponent,
+    PlaceDeleteAllDialogComponent,
     PlaceDeleteDialogComponent,
     PlaceEditDialogComponent,
     PrivacyPolicyComponent,
@@ -72,6 +74,7 @@ import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
   ],
   providers: [],
   entryComponents: [
+    PlaceDeleteAllDialogComponent,
     PlaceDeleteDialogComponent,
     PlaceEditDialogComponent
   ],

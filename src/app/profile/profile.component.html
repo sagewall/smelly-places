@@ -15,6 +15,16 @@
           <div matLine>{{place.properties.smell}}</div>
         </span>
       </mat-list-item>
+      <mat-list-item *ngIf="places.length > 0">
+        <span>
+          <button mat-button color="warn" (click)="deletePlaces(places)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </span>
+        <span>
+          <div matLine>DELETE ALL PLACES</div>
+        </span>
+      </mat-list-item>
     </mat-list>
     <ng-template #noPlaces>No Places Found</ng-template>
   </mat-card-content>
