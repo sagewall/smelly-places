@@ -1,5 +1,2 @@
 User-agent: *
-Allow: /home/
 Disallow: /
-
-Sitemap: https://smellyplaces.com/sitemap.xml

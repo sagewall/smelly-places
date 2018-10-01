@@ -26,8 +26,7 @@
               "src/favicon.ico",
               "src/assets",
               "src/manifest.json",
-              "src/robots.txt",
-              "src/sitemap.xml"
+              "src/robots.txt"
             ],
             "styles": [
               "src/styles.sass"
@@ -87,8 +86,7 @@
               "src/favicon.ico",
               "src/assets",
               "src/manifest.json",
-              "src/robots.txt",
-              "src/sitemap.xml"
+              "src/robots.txt"
             ]
           }
         },
