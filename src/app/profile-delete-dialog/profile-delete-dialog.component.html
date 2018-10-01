@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>Delete Profile</h2>
+<mat-dialog-content>
+  Are you sure? This will delete all your Smelly Places data and your Smelly Places profile. This action cannot be
+  reversed, however you can sign up for a new account if you wish to use Smelly Places in the future.
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button color="warn" mat-dialog-close (click)="deleteProfile()">Delete Profile</button>
+</mat-dialog-actions>

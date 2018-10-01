@@ -32,6 +32,7 @@ import { PlaceDeleteDialogComponent } from './place-delete-dialog/place-delete-d
 import { PlaceEditDialogComponent } from './place-edit-dialog/place-edit-dialog.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ProfileDeleteDialogComponent } from './profile-delete-dialog/profile-delete-dialog.component';
 import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
 
 @NgModule({
@@ -49,6 +50,7 @@ import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
     PlaceEditDialogComponent,
     PrivacyPolicyComponent,
     ProfileComponent,
+    ProfileDeleteDialogComponent,
     TermsOfUseComponent
   ],
   imports: [
@@ -76,7 +78,8 @@ import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
   entryComponents: [
     PlaceDeleteAllDialogComponent,
     PlaceDeleteDialogComponent,
-    PlaceEditDialogComponent
+    PlaceEditDialogComponent,
+    ProfileDeleteDialogComponent
   ],
   bootstrap: [AppComponent]
 })

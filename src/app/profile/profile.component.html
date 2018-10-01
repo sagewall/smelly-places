@@ -1,31 +1,40 @@
-<mat-card *ngIf="currentUser">
-  <mat-card-title>{{currentUser.displayName}}</mat-card-title>
-  <mat-card-subtitle>{{currentUser.email}}</mat-card-subtitle>
-  <mat-card-content>
-    <mat-list *ngIf="places$ | async as places; else noPlaces;">
-      <div mat-subheader>My Smelly Places</div>
-      <mat-list-item *ngFor="let place of places">
-        <span>
-          <button mat-button (click)="deletePlace(place)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </span>
-        <span>
-          <div matLine>{{place.properties.name}}</div>
-          <div matLine>{{place.properties.smell}}</div>
-        </span>
-      </mat-list-item>
-      <mat-list-item *ngIf="places.length > 0">
-        <span>
-          <button mat-button color="warn" (click)="deletePlaces(places)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </span>
-        <span>
-          <div matLine>DELETE ALL PLACES</div>
-        </span>
-      </mat-list-item>
-    </mat-list>
-    <ng-template #noPlaces>No Places Found</ng-template>
-  </mat-card-content>
-</mat-card>
+<div *ngIf="places$ | async as places; else noPlaces;">
+  <mat-card *ngIf="currentUser">
+    <mat-card-title>{{currentUser.displayName}}</mat-card-title>
+    <mat-card-subtitle>{{currentUser.email}}</mat-card-subtitle>
+    <mat-card-content>
+      <mat-list>
+        <div mat-subheader>My Smelly Places</div>
+        <mat-list-item *ngFor="let place of places">
+          <span>
+            <button mat-button (click)="deletePlace(place)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </span>
+          <span>
+            <div matLine>{{place.properties.name}}</div>
+            <div matLine>{{place.properties.smell}}</div>
+          </span>
+        </mat-list-item>
+        <mat-list-item *ngIf="places.length > 0">
+          <span>
+            <button mat-button color="warn" (click)="deletePlaces(places)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </span>
+          <span>
+            <div matLine>DELETE ALL PLACES</div>
+          </span>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="warn" (click)="deleteProfile(places)">Delete My Profile</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<ng-template #noPlaces>
+  <mat-card>
+    <mat-card-title>Loading...</mat-card-title>
+  </mat-card>
+</ng-template>

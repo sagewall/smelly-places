@@ -6,6 +6,7 @@ import { GeoJson } from '../geo-json';
 import { MapService } from '../map.service';
 import { PlaceDeleteAllDialogComponent } from '../place-delete-all-dialog/place-delete-all-dialog.component';
 import { PlaceDeleteDialogComponent } from '../place-delete-dialog/place-delete-dialog.component';
+import { ProfileDeleteDialogComponent } from '../profile-delete-dialog/profile-delete-dialog.component';
 
 @Component({
   selector: 'app-profile',
@@ -20,6 +21,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     public placeDeleteAllDialog: MatDialog,
     public placeDeleteDialog: MatDialog,
+    public profileDeleteDialog: MatDialog,
     private mapService: MapService,
     private route: ActivatedRoute,
   ) { }
@@ -41,6 +43,12 @@ export class ProfileComponent implements OnInit {
 
   deletePlaces(places: GeoJson[]) {
     this.placeDeleteAllDialog.open(PlaceDeleteAllDialogComponent, {
+      data: places
+    });
+  }
+
+  deleteProfile(places: GeoJson[]) {
+    this.profileDeleteDialog.open(ProfileDeleteDialogComponent, {
       data: places
     });
   }
