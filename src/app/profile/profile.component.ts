@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import * as mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 import { Observable } from 'rxjs';
 import { GeoJson } from '../geo-json';
 import { MapService } from '../map.service';
@@ -24,6 +25,7 @@ export class ProfileComponent implements OnInit {
     public profileDeleteDialog: MatDialog,
     private mapService: MapService,
     private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -51,6 +53,12 @@ export class ProfileComponent implements OnInit {
     this.profileDeleteDialog.open(ProfileDeleteDialogComponent, {
       data: places
     });
+  }
+
+  viewPlace(place: GeoJson) {
+    this.mapService.center = new mapboxgl.LngLat(place.geometry.coordinates[0], place.geometry.coordinates[1]);
+    this.mapService.zoom = 16;
+    this.router.navigate(['/map', 'edit']);
   }
 
 }

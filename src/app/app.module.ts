@@ -9,8 +9,10 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule,
+  MatMenuModule,
   MatSidenavModule,
-  MatToolbarModule } from '@angular/material';
+  MatToolbarModule
+} from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -62,16 +64,16 @@ import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
     BrowserModule,
     FormsModule,
     LayoutModule,
+    MatButtonModule,
     MatCardModule,
     MatDialogModule,
+    MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatFormFieldModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
     MatListModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatToolbarModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],

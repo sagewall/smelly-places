@@ -7,8 +7,16 @@
         <div mat-subheader>My Smelly Places</div>
         <mat-list-item *ngFor="let place of places">
           <span>
-            <button mat-button (click)="deletePlace(place)">
-              <mat-icon>delete</mat-icon>
+            <mat-menu #placeMenu="matMenu">
+              <button mat-menu-item (click)="viewPlace(place)">
+                <mat-icon>my_location</mat-icon>View to Edit {{place.properties.name}}
+              </button>
+              <button mat-menu-item color="warn" (click)="deletePlace(place)">
+                <mat-icon>delete</mat-icon>Delete {{place.properties.name}}
+              </button>
+            </mat-menu>
+            <button mat-icon-button [matMenuTriggerFor]="placeMenu">
+              <mat-icon>more_vert</mat-icon>
             </button>
           </span>
           <span>
@@ -16,19 +24,10 @@
             <div matLine>{{place.properties.smell}}</div>
           </span>
         </mat-list-item>
-        <mat-list-item *ngIf="places.length > 0">
-          <span>
-            <button mat-button color="warn" (click)="deletePlaces(places)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </span>
-          <span>
-            <div matLine>DELETE ALL PLACES</div>
-          </span>
-        </mat-list-item>
       </mat-list>
     </mat-card-content>
     <mat-card-actions>
+      <button *ngIf="places.length > 0" mat-button color="warn" (click)="deletePlaces(places)">Delete My Smelly Places</button>
       <button mat-button color="warn" (click)="deleteProfile(places)">Delete My Profile</button>
     </mat-card-actions>
   </mat-card>
