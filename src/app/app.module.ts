@@ -1,5 +1,8 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { NgModule } from '@angular/core';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
 import {
   MatButtonModule,
@@ -11,14 +14,10 @@ import {
   MatListModule,
   MatMenuModule,
   MatSidenavModule,
-  MatToolbarModule
-} from '@angular/material';
+  MatToolbarModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,8 +32,8 @@ import { PlaceDeleteAllDialogComponent } from './place-delete-all-dialog/place-d
 import { PlaceDeleteDialogComponent } from './place-delete-dialog/place-delete-dialog.component';
 import { PlaceEditDialogComponent } from './place-edit-dialog/place-edit-dialog.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
-import { ProfileComponent } from './profile/profile.component';
 import { ProfileDeleteDialogComponent } from './profile-delete-dialog/profile-delete-dialog.component';
+import { ProfileComponent } from './profile/profile.component';
 import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
 
 @NgModule({

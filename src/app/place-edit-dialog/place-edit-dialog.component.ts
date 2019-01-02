@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { GeoJson } from '../geo-json';
 import { MapService } from '../map.service';
 import { PlaceDeleteDialogComponent } from '../place-delete-dialog/place-delete-dialog.component';
@@ -8,7 +8,7 @@ import { PlaceDeleteDialogComponent } from '../place-delete-dialog/place-delete-
 @Component({
   selector: 'app-place-edit-dialog',
   templateUrl: './place-edit-dialog.component.html',
-  styleUrls: ['./place-edit-dialog.component.sass']
+  styleUrls: ['./place-edit-dialog.component.scss']
 })
 export class PlaceEditDialogComponent implements OnInit {
 

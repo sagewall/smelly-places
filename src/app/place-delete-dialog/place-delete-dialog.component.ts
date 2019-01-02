@@ -6,7 +6,7 @@ import { MapService } from '../map.service';
 @Component({
   selector: 'app-place-delete-dialog',
   templateUrl: './place-delete-dialog.component.html',
-  styleUrls: ['./place-delete-dialog.component.sass']
+  styleUrls: ['./place-delete-dialog.component.scss']
 })
 export class PlaceDeleteDialogComponent implements OnInit {
 

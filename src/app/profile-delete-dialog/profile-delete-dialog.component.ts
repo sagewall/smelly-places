@@ -1,14 +1,14 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { GeoJson } from '../geo-json';
 import { MapService } from '../map.service';
 
 @Component({
   selector: 'app-profile-delete-dialog',
   templateUrl: './profile-delete-dialog.component.html',
-  styleUrls: ['./profile-delete-dialog.component.sass']
+  styleUrls: ['./profile-delete-dialog.component.scss']
 })
 export class ProfileDeleteDialogComponent implements OnInit {
 

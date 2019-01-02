@@ -11,7 +11,7 @@ import { PlaceEditDialogComponent } from '../place-edit-dialog/place-edit-dialog
 @Component({
   selector: 'app-map-edit',
   templateUrl: './map-edit.component.html',
-  styleUrls: ['./map-edit.component.sass']
+  styleUrls: ['./map-edit.component.scss']
 })
 export class MapEditComponent implements OnInit, OnDestroy {
   @ViewChild('mapCanvas')

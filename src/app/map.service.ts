@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import * as mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
