@@ -1,4 +1,4 @@
-<div *ngIf="places$ | async as places; else noPlaces;">
+<div *ngIf="places$ | async as places; else noPlaces;" class="container">
   <mat-card *ngIf="currentUser">
     <mat-card-title>{{currentUser.displayName}}</mat-card-title>
     <mat-card-subtitle>{{currentUser.email}}</mat-card-subtitle>

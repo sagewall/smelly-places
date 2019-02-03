@@ -24,3 +24,7 @@ html, body {
 .background-color-accent_50 {
   background: mat-color($app-accent, 50);
 }
+
+.container {
+  margin: 1em;
+}
