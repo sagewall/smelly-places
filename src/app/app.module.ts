@@ -14,7 +14,8 @@ import {
   MatListModule,
   MatMenuModule,
   MatSidenavModule,
-  MatToolbarModule } from '@angular/material';
+  MatSnackBarModule,
+  MatToolbarModule} from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -31,6 +32,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { PlaceDeleteAllDialogComponent } from './place-delete-all-dialog/place-delete-all-dialog.component';
 import { PlaceDeleteDialogComponent } from './place-delete-dialog/place-delete-dialog.component';
 import { PlaceEditDialogComponent } from './place-edit-dialog/place-edit-dialog.component';
+import { PolicyAcceptanceComponent } from './policy-acceptance/policy-acceptance.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { ProfileDeleteDialogComponent } from './profile-delete-dialog/profile-delete-dialog.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -52,7 +54,8 @@ import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
     PrivacyPolicyComponent,
     ProfileComponent,
     ProfileDeleteDialogComponent,
-    TermsOfUseComponent
+    TermsOfUseComponent,
+    PolicyAcceptanceComponent
   ],
   imports: [
     AppRoutingModule,
@@ -72,6 +75,7 @@ import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
     MatListModule,
     MatMenuModule,
     MatSidenavModule,
+    MatSnackBarModule,
     MatToolbarModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
@@ -80,6 +84,7 @@ import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
     PlaceDeleteAllDialogComponent,
     PlaceDeleteDialogComponent,
     PlaceEditDialogComponent,
+    PolicyAcceptanceComponent,
     ProfileDeleteDialogComponent
   ],
   bootstrap: [AppComponent]
