@@ -83,3 +83,7 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+/* @mapbox/mapbox-gl-geocoder
+ * Add global to window, assigning the value of window itself.
+ */
+(window as any).global = window;
