@@ -1,11 +1,11 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { MatSnackBar } from '@angular/material';
+import { MatSidenav, MatSnackBar } from '@angular/material';
 import { NavigationEnd, Router } from '@angular/router';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, withLatestFrom } from 'rxjs/operators';
 import { PolicyAcceptanceComponent } from '../policy-acceptance/policy-acceptance.component';
 
 @Component({
@@ -15,7 +15,12 @@ import { PolicyAcceptanceComponent } from '../policy-acceptance/policy-acceptanc
 })
 export class NavigationComponent {
 
-  isHandset$: Observable<boolean>;
+  @ViewChild('drawer', { static: true }) drawer: MatSidenav;
+
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches)
+    );
 
   constructor(
     public afAuth: AngularFireAuth,
@@ -23,21 +28,14 @@ export class NavigationComponent {
     private router: Router,
     private snackBar: MatSnackBar
   ) {
-    this.isHandset$ = this.breakpointObserver.observe(Breakpoints.Handset)
-      .pipe(
-        map(result => result.matches)
-      );
-
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe(() => {
-      document.querySelector('.mat-sidenav-content').scrollTop = 0;
-    });
+    router.events.pipe(
+      withLatestFrom(this.isHandset$),
+      filter(([a, b]) => b && a instanceof NavigationEnd)
+    ).subscribe(_ => this.drawer.close());
 
     if (localStorage.getItem('smellyplaces.policiesAccepted') !== '2/3/2019') {
       this.displaySnackBar();
     }
-
   }
 
   login() {

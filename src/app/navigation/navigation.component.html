@@ -1,12 +1,14 @@
 <mat-toolbar color="primary">
-  <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+  <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+    *ngIf="isHandset$ | async">
     <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
   </button>
   <span class="title">Smelly Places</span>
 </mat-toolbar>
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav background-color-accent_50" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
+  <mat-sidenav #drawer class="sidenav background-color-accent_50"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false">
     <div class="mat-nav-list-container">
       <div>
         <mat-nav-list>
@@ -35,24 +37,27 @@
       <div>
         <mat-nav-list>
           <div routerLinkActive="background-color-accent_200">
-            <a mat-list-item [routerLink]="['/cookie']">Cookie Policy</a>
+            <a mat-list-item [routerLink]="['/cookie']" (click)="content.scrollTo({top: 0})">Cookie
+              Policy</a>
           </div>
           <div routerLinkActive="background-color-accent_200">
-              <a mat-list-item [routerLink]="['/disclaimer']">Disclaimer</a>
-            </div>
-          <div routerLinkActive="background-color-accent_200">
-            <a mat-list-item [routerLink]="['/privacy']">Privacy Policy</a>
+            <a mat-list-item [routerLink]="['/disclaimer']" (click)="content.scrollTo({top: 0});">Disclaimer</a>
           </div>
           <div routerLinkActive="background-color-accent_200">
-            <a mat-list-item [routerLink]="['/terms']">Terms of Use</a>
+            <a mat-list-item [routerLink]="['/privacy']" (click)="content.scrollTo({top: 0})">Privacy
+              Policy</a>
+          </div>
+          <div routerLinkActive="background-color-accent_200">
+            <a mat-list-item [routerLink]="['/terms']" (click)="content.scrollTo({top: 0})">Terms of
+              Use</a>
           </div>
         </mat-nav-list>
-        <div class="copyright mat-caption">&copy; Sage Wall, 2018.</div>
+        <div class="copyright mat-caption">&copy; Sage Wall, 2019.</div>
         <div class="copyright mat-caption">All Rights Reserved.</div>
       </div>
     </div>
   </mat-sidenav>
-  <mat-sidenav-content class="sidenav-content">
+  <mat-sidenav-content #content class="sidenav-content">
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

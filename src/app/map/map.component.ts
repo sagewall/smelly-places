@@ -12,7 +12,7 @@ import { MapService } from '../map.service';
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit, OnDestroy {
-  @ViewChild('mapCanvas')
+  @ViewChild('mapCanvas', { static: true })
   private mapCanvasElementRef: ElementRef;
 
   private get mapCanvasNativeElement(): HTMLElement {
@@ -60,7 +60,8 @@ export class MapComponent implements OnInit, OnDestroy {
     });
 
     this.map.addControl(new MapboxGeocoder({
-      accessToken: mapboxgl.accessToken
+      accessToken: mapboxgl.accessToken,
+      mapboxgl
     }), 'top-left');
 
     this.map.addControl(new mapboxgl.GeolocateControl(), 'top-left');

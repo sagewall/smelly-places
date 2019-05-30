@@ -67,15 +67,15 @@ export class PlaceEditDialogComponent implements OnInit {
     this.feature.properties.smell = this.smell;
 
     if (this.feature.properties.modified) {
-      this.mapService.updateFeature(<GeoJson>this.feature);
+      this.mapService.updateFeature(this.feature as GeoJson);
     } else {
-      this.mapService.createFeature(<GeoJson>this.feature);
+      this.mapService.createFeature(this.feature as GeoJson);
     }
   }
 
   deletePlace() {
     this.placeDeleteDialog.open(PlaceDeleteDialogComponent, {
-      data: <GeoJson>this.feature
+      data: this.feature as GeoJson
     });
   }
 

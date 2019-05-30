@@ -15,12 +15,13 @@ import {
   MatMenuModule,
   MatSidenavModule,
   MatSnackBarModule,
-  MatToolbarModule} from '@angular/material';
+  MatToolbarModule
+} from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { AppRoutingModule } from './app-routing/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CookiePolicyComponent } from './cookie-policy/cookie-policy.component';
 import { DisclaimerComponent } from './disclaimer/disclaimer.component';
